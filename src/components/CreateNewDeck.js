@@ -1,0 +1,38 @@
+import React, { Component } from 'react';
+import { Button, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { connect } from 'react-redux';
+import { sayHi } from '../actions';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
+
+class CreateNewDeck extends Component {
+
+  render() {
+    const decks = this.props.state.decks;
+
+    return (
+      <View style={styles.container}>
+        <Text>CreateNewDeck view</Text>
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
+const mapStateToProps = (state, ownProps) => ({
+  state,
+  ownProps,
+  message: state.message
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  sayHi: () => dispatch(sayHi()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateNewDeck);

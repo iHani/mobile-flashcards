@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Button, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { sayHi } from '../actions';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class ConnectedToRedux extends Component {
 
@@ -11,13 +12,29 @@ class ConnectedToRedux extends Component {
   };
 
   render() {
+    const xx = JSON.stringify(Object.keys(this.props.state.decks));
+
     return (
-      <Text>I am ConnectedToRedux. {this.props.message}</Text>
+      <View>
+      <Text>
+        <Ionicons name='ios-bookmarks' size={30} color={'red'} />
+        I am ConnectedTocRedux. {xx}
+      </Text>
+      <Button
+        onPress={() => 'Bonga'}
+        title="Create New Deck"
+        color="#841584"
+        accessibilityLabel="Learn more about this purple button"
+      />
+    </View>
+
     )
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  state,
+  ownProps,
   message: state.message
 });
 
