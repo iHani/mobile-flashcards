@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-import { Button, Text, View, StyleSheet, TouchableHighlight } from 'react-native';
+import { Button, Text, View, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { sayHi } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
-class CreateNewDeck extends Component {
+class StartQuiz extends Component {
 
   render() {
     const decks = this.props.state.decks;
 
     return (
       <View style={styles.container}>
-        <Text>CreateNewDeck view</Text>
+        <Text>StartQuiz view</Text>
+        {/* <Text>StartQuiz view: {this.props.navigation.state.params.deck}</Text> */}
+        {/* <Text>{JSON.stringify(this.props.navigation, null, 2)}</Text> */}
       </View>
     )
   }
@@ -35,4 +37,4 @@ const mapDispatchToProps = (dispatch) => ({
   sayHi: () => dispatch(sayHi()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateNewDeck);
+export default connect(mapStateToProps, mapDispatchToProps)(StartQuiz);

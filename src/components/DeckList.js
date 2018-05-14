@@ -7,31 +7,29 @@ import Progress from './Progress';
 
 class DeckList extends Component {
 
-  state = {
-    count: 0
-  }
+  componentDidMount = () => {
+    const self = this;
+    setTimeout(() => self.props.sayHi('hanii'), 500);
+  };
 
   onPress = (deck) => {
     const { navigate } = this.props.navigation;
     navigate('DeckView', { deck });
-    this.setState({
-      count: this.state.count+1
-    })
   }
 
   render() {
-    const decks = this.props.state.decks;
+    const decks = this.props.decks;
     const keys = Object.keys(decks);
 
     return (
       <View style={styles.container}>
 
         <View style={[styles.deckRow, { height: 35 }]}>
-          <View style={[styles.headerBox, { flex: 5, borderColor: '#0a98d1' }]}>
-            <Text style={styles.headerText}>Decks</Text>
+          <View style={styles.headerDeckBox}>
+            <Text style={styles.headerDeckText}>Decks</Text>
           </View>
-          <View style={[styles.headerBox, { flex: 1, borderColor: '#0a98d1', alignItems: 'center' }]}>
-            <Text style={styles.headerText}>Cards</Text>
+          <View style={styles.headerCountBox}>
+            <Text style={styles.headerCountText}>Cards</Text>
           </View>
         </View>
 
@@ -48,6 +46,11 @@ class DeckList extends Component {
               </View>
             </TouchableOpacity>
           ))}
+
+          {/* <Text style={{ color: 'white' }}>{JSON.stringify(this.props.state.decks, null, 2)}</Text> */}
+          <Text style={{ color: 'white' }}>{this.props.message}</Text>
+          <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>
+
         </ScrollView>
 
       </View>
@@ -66,14 +69,29 @@ const styles = StyleSheet.create({
     height: 75,
   },
 
-  headerBox: {
+  headerDeckBox: {
+    flex: 5,
     justifyContent: 'center',
     paddingLeft: 20,
+    borderBottomWidth: 2,
+    borderColor: '#0a98d1',
     backgroundColor: '#11465b',
+  },
+  headerDeckText: {
+    color: '#d3f2ff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  headerCountBox: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
     borderBottomWidth: 2,
     borderColor: '#a3e3ff',
+    borderColor: '#0a98d1',
+    backgroundColor: '#11465b',
   },
-  headerText: {
+  headerCountText: {
     color: '#d3f2ff',
     fontSize: 18,
     fontWeight: 'bold',
@@ -92,7 +110,6 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: 'bold',
   },
-
   countBox: {
     flex: 1,
     backgroundColor: '#0879a8',
@@ -100,24 +117,22 @@ const styles = StyleSheet.create({
     alignItems:'center',
     borderBottomWidth: 4,
     borderColor: '#065f84',
-
   },
   countText: {
     fontSize: 20,
     color: '#d3f2ff',
     fontWeight: 'bold',
-
   },
 });
 
 const mapStateToProps = (state, ownProps) => ({
   state,
-  ownProps,
-  message: state.message
+  message: state.message,
+  decks: state.decks
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  sayHi: () => dispatch(sayHi()),
+  sayHi: (name) => dispatch(sayHi(name)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeckList);

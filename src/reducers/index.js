@@ -1,5 +1,6 @@
 import {
   SAY_HI,
+  CREATE_DECK
 } from '../actions';
 
 const initialState = {
@@ -25,88 +26,26 @@ const initialState = {
           answer: 'The combination of a function and the lexical environment within which that function was declared.'
         }
       ]
-    },
-    Math: {
-      title: 'Math',
-      questions: [
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        }
-      ]
-    },
-    English: {
-      title: 'English',
-      questions: [
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        }
-      ]
-    },
-    Physics: {
-      title: 'Physics',
-      questions: [
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        },
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        }
-      ]
     }
   }
-}
+};
 
 export default (state = initialState, action) => {
-  switch (action.type) {
+  const { type, deckTitle } = action;
+  const { decks } = state;
+
+  switch (type) {
 
     case SAY_HI :
     return {
       ...state,
-      message: action.message
+      message: action.message,
+    };
+
+    case CREATE_DECK :
+    return {
+      ...state,
+      decks: { ...decks, [deckTitle]: { title: deckTitle, questions: [] } }
     };
 
     default :

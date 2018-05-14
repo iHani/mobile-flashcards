@@ -7,14 +7,17 @@ import reducers from './src/reducers';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import ConnectedToRedux from './src/components/ConnectedToRedux';
 import DeckList from './src/components/DeckList';
-import CreateNewDeck from './src/components/CreateNewDeck';
+import CreateDeck from './src/components/CreateDeck';
 import Progress from './src/components/Progress';
 import DeckView from './src/components/DeckView';
+import CreateCard from './src/components/CreateCard';
+import StartQuiz from './src/components/StartQuiz';
+import devToolsEnhancer from 'remote-redux-devtools';
 
-const store = createStore(reducers);
+const store = createStore(reducers, devToolsEnhancer());
 
-const Stack = StackNavigator({
-  Decks: {
+const DecksStack = StackNavigator({
+  DeckList: {
     screen: DeckList,
     navigationOptions: {
       tabBarLabel: 'Decks',
@@ -26,11 +29,23 @@ const Stack = StackNavigator({
     navigationOptions: {
       title: 'Deck'
     }
+  },
+  CreateCard: {
+    screen: CreateCard,
+    navigationOptions: {
+      title: 'New Card'
+    }
+  },
+  StartQuiz: {
+    screen: StartQuiz,
+    navigationOptions: {
+      title: 'Quiz'
+    }
   }
 });
 
 const TabNavigatorConfig = {
-  initialRouteName: 'Decks',
+  initialRouteName: 'DeckList',
   lazy: true,
   tabBarOptions: {
     activeTintColor: '#0673a0',
@@ -47,17 +62,17 @@ const TabNavigatorConfig = {
 };
 
 const Tabs = TabNavigator({
-  Decks: {
-    screen: Stack,
+  DeckList: {
+    screen: DecksStack,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-photos-outline' size={30} color={tintColor} />
     },
   },
-  NewDeck: {
-    screen: CreateNewDeck,
+  CreateDeck: {
+    screen: CreateDeck,
     navigationOptions: {
-      tabBarLabel: 'New Deck',
+      tabBarLabel: 'Create Deck',
       tabBarIcon: ({ tintColor }) => <Ionicons name='md-add' size={30} color={tintColor} />
     },
   },

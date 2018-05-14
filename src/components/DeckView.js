@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { sayHi } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
@@ -10,28 +10,32 @@ class DeckView extends Component {
     const decks = this.props.state.decks;
     const deck = this.props.navigation.state.params.deck;
     const questions = decks[deck];
+    const totalCards = decks[deck].questions.length
+    const { navigate } = this.props.navigation;
 
     return (
       <View style={styles.container}>
 
         <View style={styles.textsSection}>
           <Text style={styles.deckTitle}>{deck}</Text>
-          <Text style={styles.cards}>Cards ({decks[deck].questions.length})</Text>
+          <Text style={styles.cards}>Cards ({totalCards})</Text>
         </View>
 
         <View style={styles.buttonsSection}>
           <TouchableOpacity
             style={styles.btnAddCard}
-            onPress={() => navigate('AddCard')}
+            onPress={() => navigate('CreateCard')}
             underlayColor='#fff'>
             <Text style={styles.addCardText}>Add Card</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btnStartQuiz}
-            onPress={() => navigate('StartQuiz')}
-            underlayColor='#fff'>
-            <Text style={styles.startQuizText}>Start Quiz</Text>
-          </TouchableOpacity>
+          {totalCards > 0 &&
+            <TouchableOpacity
+              style={styles.btnStartQuiz}
+              onPress={() => navigate('StartQuiz')}
+              underlayColor='#fff'>
+              <Text style={styles.startQuizText}>Start Quiz</Text>
+            </TouchableOpacity>
+          }
         </View>
 
       </View>
