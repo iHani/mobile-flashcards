@@ -22,6 +22,7 @@ class CreateDeck extends Component {
   }
 
   render() {
+    console.log('state', this.props.state);
     const { decks } = this.props.state;
     const { navigate } = this.props.navigation;
 

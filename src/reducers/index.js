@@ -1,6 +1,7 @@
 import {
   SAY_HI,
-  CREATE_DECK
+  CREATE_DECK,
+  NEW_QUIZ_RECORD,
 } from '../actions';
 
 const initialState = {
@@ -27,12 +28,13 @@ const initialState = {
         }
       ]
     }
-  }
+  },
+  records: {}
 };
 
 export default (state = initialState, action) => {
-  const { type, deckTitle } = action;
-  const { decks } = state;
+  const { type, deckTitle, score } = action;
+  const { decks, records } = state;
 
   switch (type) {
 
@@ -46,6 +48,13 @@ export default (state = initialState, action) => {
     return {
       ...state,
       decks: { ...decks, [deckTitle]: { title: deckTitle, questions: [] } }
+    };
+
+    case NEW_QUIZ_RECORD :
+    console.log('NEW_QUIZ_RECORD', score);
+    return {
+      ...state,
+      records: { ...records, score }
     };
 
     default :

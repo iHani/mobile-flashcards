@@ -24,14 +24,14 @@ class DeckView extends Component {
         <View style={styles.buttonsSection}>
           <TouchableOpacity
             style={styles.btnAddCard}
-            onPress={() => navigate('CreateCard')}
+            onPress={() => navigate('CreateCard', { deck })}
             underlayColor='#fff'>
             <Text style={styles.addCardText}>Add Card</Text>
           </TouchableOpacity>
           {totalCards > 0 &&
             <TouchableOpacity
               style={styles.btnStartQuiz}
-              onPress={() => navigate('StartQuiz')}
+              onPress={() => navigate('Quiz', { deck })}
               underlayColor='#fff'>
               <Text style={styles.startQuizText}>Start Quiz</Text>
             </TouchableOpacity>

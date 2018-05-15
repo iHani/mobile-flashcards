@@ -11,7 +11,7 @@ import CreateDeck from './src/components/CreateDeck';
 import Progress from './src/components/Progress';
 import DeckView from './src/components/DeckView';
 import CreateCard from './src/components/CreateCard';
-import StartQuiz from './src/components/StartQuiz';
+import Quiz from './src/components/Quiz';
 import devToolsEnhancer from 'remote-redux-devtools';
 
 const store = createStore(reducers, devToolsEnhancer());
@@ -32,14 +32,11 @@ const DecksStack = StackNavigator({
   },
   CreateCard: {
     screen: CreateCard,
-    navigationOptions: {
-      title: 'New Card'
-    }
   },
-  StartQuiz: {
-    screen: StartQuiz,
+  Quiz: {
+    screen: Quiz,
     navigationOptions: {
-      title: 'Quiz'
+      tabBarVisible: false
     }
   }
 });
