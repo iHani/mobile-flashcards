@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Text, KeyboardAvoidingView, Keyboard, StyleSheet, TouchableOpacity, TextInput, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { sayHi, createDeck } from '../actions';
+import { newCard } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class CreateCard extends Component {
@@ -19,7 +19,17 @@ class CreateCard extends Component {
 
   handleCreateCard = () => {
     const { question, answer } = this.state;
+
+
     if (question.trim() && answer.trim()) {
+      const card = {
+        title: this.props.deck,
+        question,
+        answer,
+      }
+
+      this.props.newCard(card);
+
       this.setState({
         question: '',
         answer: '',
@@ -139,17 +149,14 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state', state);
+  console.log('ownProps', ownProps.navigation.state.params.deck);
   return ({
-    state,
-    ownProps,
-    message: state.message
+    deck: ownProps.navigation.state.params.deck
   });
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  creatNeweDeck: (title) => dispatch(createDeck(title)),
-  navigate: () => ownProps.navigation.navigate
+const mapDispatchToProps = (dispatch) => ({
+  newCard: (card) => dispatch(newCard(card)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateCard);

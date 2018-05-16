@@ -3,6 +3,7 @@ import { Button, Text, View, StyleSheet, ScrollView, TouchableOpacity } from 're
 import { connect } from 'react-redux';
 import { newQuizRecord } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import QuizResult from './QuizResult';
 
 class Quiz extends Component {
 
@@ -37,25 +38,24 @@ class Quiz extends Component {
   }
 
   render() {
-    const { questions } = this.props;
+    const { questions, deck } = this.props;
     const { currentQuestionIndex, totalCards, correctAnswers, incorrectAnswers, peek } = this.state;
     const quizCompleted = correctAnswers + incorrectAnswers === totalCards ? true : false;
+    const score = (correctAnswers / totalCards) * 100;
 
     if (quizCompleted) {
       const record = {
         [new Date().toLocaleDateString()]: {
-          deck: this.props.deck,
-          score: (correctAnswers / totalCards) * 100,
+          deck,
+          score,
         }
       };
 
       this.props.newRecord(record);
+      const { navigate } = this.props.navigation;
 
       return (
-        <View style={styles.container}>
-          <Text>Quiz is over</Text>
-          <Text>{JSON.stringify(record, null, 2)}</Text>
-        </View>
+        <QuizResult deck={deck} score={score} navigate={navigate}/>
       )
     }
 

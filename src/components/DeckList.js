@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { sayHi } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import Progress from './Progress';
 
 class DeckList extends Component {
-
-  componentDidMount = () => {
-    const self = this;
-    setTimeout(() => self.props.sayHi('hanii'), 500);
-  };
 
   onPress = (deck) => {
     const { navigate } = this.props.navigation;
@@ -20,19 +14,21 @@ class DeckList extends Component {
   render() {
     const decks = this.props.decks;
     const keys = Object.keys(decks);
+    const totalDecks = keys.length
 
     return (
       <View style={styles.container}>
 
-        <View style={[styles.deckRow, { height: 35 }]}>
-          <View style={styles.headerDeckBox}>
-            <Text style={styles.headerDeckText}>Decks</Text>
+        {totalDecks > 0 &&
+          <View style={[styles.deckRow, { height: 35 }]}>
+            <View style={styles.headerDeckBox}>
+              <Text style={styles.headerDeckText}>Decks ({totalDecks})</Text>
+            </View>
+            <View style={styles.headerCountBox}>
+              <Text style={styles.headerCountText}>Cards</Text>
+            </View>
           </View>
-          <View style={styles.headerCountBox}>
-            <Text style={styles.headerCountText}>Cards</Text>
-          </View>
-        </View>
-
+        }
         <ScrollView>
           {keys && keys.map(key => (
             <TouchableOpacity onPress={()=> this.onPress(key)} key={key}>
@@ -47,12 +43,17 @@ class DeckList extends Component {
             </TouchableOpacity>
           ))}
 
-          {/* <Text style={{ color: 'white' }}>{JSON.stringify(this.props.state.decks, null, 2)}</Text> */}
-          <Text style={{ color: 'white' }}>{this.props.message}</Text>
-          <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>
+          {!totalDecks &&
+            <View style={styles.deckRow}>
+              <View style={styles.titleBox}>
+                <Text style={[styles.titleText, { alignSelf: 'center' }]}>No decks!</Text>
+              </View>
+            </View>
+          }
+
+          {false && <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>}
 
         </ScrollView>
-
       </View>
     )
   }
@@ -125,14 +126,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   state,
-  message: state.message,
   decks: state.decks
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  sayHi: (name) => dispatch(sayHi(name)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckList);
+export default connect(mapStateToProps)(DeckList);

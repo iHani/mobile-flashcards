@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { sayHi } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class DeckView extends Component {
 
   render() {
-    const decks = this.props.state.decks;
+    const { decks } = this.props.state;
     const deck = this.props.navigation.state.params.deck;
     const questions = decks[deck];
     const totalCards = decks[deck].questions.length
@@ -109,14 +108,6 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state, ownProps) => ({
-  state,
-  ownProps,
-  message: state.message
-});
+const mapStateToProps = (state) => ({ state });
 
-const mapDispatchToProps = (dispatch) => ({
-  sayHi: () => dispatch(sayHi()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(DeckView);
+export default connect(mapStateToProps)(DeckView);

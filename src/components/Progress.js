@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Text, View, StyleSheet, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
-import { sayHi } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class Progress extends Component {
@@ -24,7 +23,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    // alignItems: 'center',
     paddingTop: 100
   },
 });
@@ -33,8 +31,4 @@ const mapStateToProps = (state, ownProps) => ({
   state,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  sayHi: () => dispatch(sayHi()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Progress);
+export default connect(mapStateToProps)(Progress);

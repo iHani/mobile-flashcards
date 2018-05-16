@@ -10,6 +10,7 @@ import DeckList from './src/components/DeckList';
 import CreateDeck from './src/components/CreateDeck';
 import Progress from './src/components/Progress';
 import DeckView from './src/components/DeckView';
+import QuizResult from './src/components/QuizResult';
 import CreateCard from './src/components/CreateCard';
 import Quiz from './src/components/Quiz';
 import devToolsEnhancer from 'remote-redux-devtools';

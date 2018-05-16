@@ -1,6 +1,7 @@
 import {
   SAY_HI,
   CREATE_DECK,
+  NEW_CARD,
   NEW_QUIZ_RECORD,
 } from '../actions';
 
@@ -29,24 +30,14 @@ const initialState = {
       ]
     }
   },
-  records: {
-    '5/15/2018': {
-      HTML: 888,
-    }
-  }
+  records: { }
 };
 
 export default (state = initialState, action) => {
-  const { type, deckTitle, record } = action;
+  const { type, deckTitle, card, record } = action;
   const { decks, records } = state;
 
   switch (type) {
-
-    case SAY_HI :
-    return {
-      ...state,
-      message: action.message,
-    };
 
     case CREATE_DECK :
     return {
@@ -54,11 +45,23 @@ export default (state = initialState, action) => {
       decks: { ...decks, [deckTitle]: { title: deckTitle, questions: [] } }
     };
 
+    case NEW_CARD :
+    const { title, question, answer } = card;
+    return {
+      ...state,
+      decks: {
+        ...decks,
+        [title]: {
+          title,
+          questions: state.decks[title].questions.concat({ question, answer }),
+        }
+      }
+    };
+
     case NEW_QUIZ_RECORD :
     const day = Object.keys(record)[0];
     const { deck, score } = record[day];
     const thatDay = records[day] || {};
-
     return {
       ...state,
       records: {
