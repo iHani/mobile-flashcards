@@ -40,7 +40,6 @@ class CreateCard extends Component {
 
     return (
       <ScrollView keyboardShouldPersistTaps='always' style={styles.scrollView}>
-
         <KeyboardAvoidingView
           behavior='padding'
           style={styles.container}>
@@ -78,7 +77,6 @@ class CreateCard extends Component {
           </View>
         </KeyboardAvoidingView>
       </ScrollView>
-
     )
   }
 }
@@ -133,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   statusMessage: {
-    // fontWeight: 'bold',
     fontSize: 17,
     paddingTop: 10,
     alignSelf: 'center',
@@ -142,7 +139,7 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('ownProps', ownProps);
+  console.log('state', state);
   return ({
     state,
     ownProps,

@@ -1,6 +1,6 @@
 export const SAY_HI = 'SAY_HI';
 export const CREATE_DECK = 'CREATE_DECK';
-export const NEW_QUIZ_RECORD = 'CREATE_DECK';
+export const NEW_QUIZ_RECORD = 'NEW_QUIZ_RECORD';
 
 export const sayHi = (name) => ({
   type: SAY_HI,
@@ -12,7 +12,7 @@ export const createDeck = (deckTitle) => ({
   deckTitle
 });
 
-export const newQuizRecord = (score) => ({
+export const newQuizRecord = (record) => ({
   type: NEW_QUIZ_RECORD,
-  score
+  record
 });

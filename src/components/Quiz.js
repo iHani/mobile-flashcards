@@ -37,23 +37,24 @@ class Quiz extends Component {
   }
 
   render() {
+    const { questions } = this.props;
     const { currentQuestionIndex, totalCards, correctAnswers, incorrectAnswers, peek } = this.state;
-    const quizCompleted = correctAnswers + incorrectAnswers === totalCards ? true : false
+    const quizCompleted = correctAnswers + incorrectAnswers === totalCards ? true : false;
 
     if (quizCompleted) {
-      const score = {
+      const record = {
         [new Date().toLocaleDateString()]: {
           deck: this.props.deck,
-          score: (correctAnswers/totalCards) * 100,
+          score: (correctAnswers / totalCards) * 100,
         }
-      }
+      };
 
-      this.props.newRecord(score);
-console.log('thisprops', this.props);
+      this.props.newRecord(record);
+
       return (
         <View style={styles.container}>
           <Text>Quiz is over</Text>
-          <Text>{JSON.stringify(score, null, 2)}</Text>
+          <Text>{JSON.stringify(record, null, 2)}</Text>
         </View>
       )
     }
@@ -65,7 +66,7 @@ console.log('thisprops', this.props);
         </View>
 
         <View style={styles.questionBox}>
-          <Text style={styles.questionText}>{this.props.questions[currentQuestionIndex].question}</Text>
+          <Text style={styles.questionText}>{questions[currentQuestionIndex].question}</Text>
         </View>
 
         <TouchableOpacity
@@ -75,7 +76,7 @@ console.log('thisprops', this.props);
             <Text style={styles.peekText}>Show answer</Text>
           }
           {peek &&
-            <Text style={styles.answerText}>{this.props.questions[currentQuestionIndex].answer}</Text>
+            <Text style={styles.answerText}>{questions[currentQuestionIndex].answer}</Text>
           }
         </TouchableOpacity>
 
@@ -83,7 +84,7 @@ console.log('thisprops', this.props);
           <TouchableOpacity
             style={styles.btnCorrectAnswer}
             onPress={this.handleCorrect}>
-            <Text style={styles.correctAnswerText}>Correc000t</Text>
+            <Text style={styles.correctAnswerText}>Correct</Text>
           </TouchableOpacity>
           {totalCards > 0 &&
             <TouchableOpacity
@@ -194,7 +195,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  newRecord: (score) => dispatch(newQuizRecord(score)),
+  newRecord: (record) => dispatch(newQuizRecord(record)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Quiz);

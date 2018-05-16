@@ -7,14 +7,15 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 class Progress extends Component {
 
   render() {
-    const decks = this.props.state.decks;
+    const { state } = this.props;
 
     return (
-      <View style={styles.container}>
-        <Text>Progress view</Text>
-        {/* <Text>Progress view: {this.props.navigation.state.params.deck}</Text> */}
-        {/* <Text>{JSON.stringify(this.props.navigation, null, 2)}</Text> */}
-      </View>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text>records:</Text>
+          <Text style={{color: 'red'}}>{JSON.stringify(state.records, null, 2)}</Text>
+        </View>
+      </ScrollView>
     )
   }
 }
@@ -23,14 +24,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
+    paddingTop: 100
   },
 });
 
 const mapStateToProps = (state, ownProps) => ({
   state,
-  ownProps,
-  message: state.message
 });
 
 const mapDispatchToProps = (dispatch) => ({

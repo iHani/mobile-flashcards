@@ -29,11 +29,15 @@ const initialState = {
       ]
     }
   },
-  records: {}
+  records: {
+    '5/15/2018': {
+      HTML: 888,
+    }
+  }
 };
 
 export default (state = initialState, action) => {
-  const { type, deckTitle, score } = action;
+  const { type, deckTitle, record } = action;
   const { decks, records } = state;
 
   switch (type) {
@@ -51,10 +55,16 @@ export default (state = initialState, action) => {
     };
 
     case NEW_QUIZ_RECORD :
-    console.log('NEW_QUIZ_RECORD', score);
+    const day = Object.keys(record)[0];
+    const { deck, score } = record[day];
+    const thatDay = records[day] || {};
+
     return {
       ...state,
-      records: { ...records, score }
+      records: {
+        ...records,
+        [day]: Object.assign(thatDay, { [deck]: score })
+      },
     };
 
     default :
