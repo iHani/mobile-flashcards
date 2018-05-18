@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import { Button, Text, KeyboardAvoidingView, Keyboard, StyleSheet, TouchableOpacity, TextInput, View, ScrollView } from 'react-native';
+import {
+  Text,
+  KeyboardAvoidingView,
+  Keyboard,
+  StyleSheet,
+  TouchableOpacity,
+  TextInput,
+  View,
+  ScrollView,
+} from 'react-native';
 import { connect } from 'react-redux';
-import { newCard } from '../actions';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { newCard } from '../actions';
 
 class CreateCard extends Component {
 
@@ -20,7 +29,6 @@ class CreateCard extends Component {
   handleCreateCard = () => {
     const { question, answer } = this.state;
 
-
     if (question.trim() && answer.trim()) {
       const card = {
         title: this.props.deck,
@@ -28,8 +36,10 @@ class CreateCard extends Component {
         answer,
       }
 
+      // Create new card
       this.props.newCard(card);
 
+      // Clear TextInput's and update statusMessage
       this.setState({
         question: '',
         answer: '',
@@ -41,11 +51,11 @@ class CreateCard extends Component {
       this.setState({
         statusMessage: 'Please enter a question and an answer!',
         statusMessageColor: 'red',
-      })
+      });
     }
   }
 
-  render() {
+  render () {
     const { statusMessage, statusMessageColor } = this.state;
 
     return (
@@ -54,7 +64,6 @@ class CreateCard extends Component {
           behavior='padding'
           style={styles.container}>
           <View>
-            {/* <Text>{JSON.stringify(this.props.state, null, 2)}</Text> */}
             <Text style={styles.headerText}>Add New Card</Text>
             <TextInput
               value={this.state.question}
@@ -99,14 +108,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
   },
   headerText: {
     fontSize: 28,
     fontWeight: 'bold',
     alignSelf: 'center',
     paddingTop: 30,
-    color: '#07587a'
+    color: '#07587a',
   },
   textInput: {
     backgroundColor: '#f5f5f5',
@@ -133,7 +142,7 @@ const styles = StyleSheet.create({
     shadowColor: '#c9dce5',
     shadowOpacity: 98,
     shadowRadius: 5,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   createDeckText: {
     color: '#d3f2ff',
@@ -144,12 +153,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     paddingTop: 10,
     alignSelf: 'center',
-
   }
 });
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('ownProps', ownProps.navigation.state.params.deck);
   return ({
     deck: ownProps.navigation.state.params.deck
   });

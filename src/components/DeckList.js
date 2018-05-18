@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { Button, Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import Progress from './Progress';
+
+const swipeoutBtns = [
+  {
+    text: 'Button',
+    onPress: () => console.log('swipable presses')
+  }
+]
 
 class DeckList extends Component {
 
@@ -11,10 +18,10 @@ class DeckList extends Component {
     navigate('DeckView', { deck });
   }
 
-  render() {
-    const decks = this.props.decks;
+  render () {
+    const { decks } = this.props;
     const keys = Object.keys(decks);
-    const totalDecks = keys.length
+    const totalDecks = keys.length;
 
     return (
       <View style={styles.container}>
@@ -30,6 +37,7 @@ class DeckList extends Component {
           </View>
         }
         <ScrollView>
+
           {keys && keys.map(key => (
             <TouchableOpacity onPress={()=> this.onPress(key)} key={key}>
               <View style={styles.deckRow}>
@@ -51,7 +59,9 @@ class DeckList extends Component {
             </View>
           }
 
-          {false && <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>}
+          { // for debugging only
+            true && <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>
+          }
 
         </ScrollView>
       </View>
@@ -65,7 +75,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#07587a',
   },
   deckRow: {
-    backgroundColor: 'pink',
+    backgroundColor: '#11465b',
     flexDirection: 'row',
     height: 75,
   },
@@ -126,9 +136,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => ({
-  state,
-  decks: state.decks
-});
+const mapStateToProps = (state) => ({ state, decks: state.decks });
+// const mapStateToProps = ({ decks }) => ({ decks });
+// for cases like this one, it would be sexier if we could do something like this :p
+// const mapStateToProps ===> ({ decks })
 
 export default connect(mapStateToProps)(DeckList);

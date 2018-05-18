@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
 class DeckView extends Component {
 
-  render() {
-    const { decks } = this.props.state;
-    const deck = this.props.navigation.state.params.deck;
-    const questions = decks[deck];
-    const totalCards = decks[deck].questions.length
+  render () {
     const { navigate } = this.props.navigation;
+    const { decks } = this.props.state;
+    const { deck } = this.props.navigation.state.params;
+    const questions = decks[deck];
+    const totalCards = decks[deck].questions.length;
 
     return (
       <View style={styles.container}>

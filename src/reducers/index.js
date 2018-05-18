@@ -1,8 +1,9 @@
 import {
-  SAY_HI,
   CREATE_DECK,
   NEW_CARD,
   NEW_QUIZ_RECORD,
+  ENABLE_REMINDER_TOGGLE,
+  QUIZ_TAKEN_TODAY,
 } from '../actions';
 
 const initialState = {
@@ -30,11 +31,22 @@ const initialState = {
       ]
     }
   },
-  records: { }
+  records: {
+    '5/17/2018': {
+      'React': 33,
+      'JavaScript': 20
+    },
+    '5/18/2018': {
+      'React': 75,
+      'JavaScript': 100
+    }
+  },
+  isReminderEnabled: true,
+  quizTakenToday: false,
 };
 
 export default (state = initialState, action) => {
-  const { type, deckTitle, card, record } = action;
+  const { type, deckTitle, card, record, isReminderEnabled } = action;
   const { decks, records } = state;
 
   switch (type) {
@@ -53,12 +65,13 @@ export default (state = initialState, action) => {
         ...decks,
         [title]: {
           title,
-          questions: state.decks[title].questions.concat({ question, answer }),
+          questions: state.decks[title].questions.concat({ question, answer })
         }
       }
     };
 
     case NEW_QUIZ_RECORD :
+    // day object has only one key, the date in this format m/d/y
     const day = Object.keys(record)[0];
     const { deck, score } = record[day];
     const thatDay = records[day] || {};
@@ -67,7 +80,19 @@ export default (state = initialState, action) => {
       records: {
         ...records,
         [day]: Object.assign(thatDay, { [deck]: score })
-      },
+      }
+    };
+
+    case ENABLE_REMINDER_TOGGLE :
+    return {
+      ...state,
+      isReminderEnabled
+    };
+
+    case QUIZ_TAKEN_TODAY :
+    return {
+      ...state,
+      quizTakenToday: true
     };
 
     default :
