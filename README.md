@@ -35,7 +35,7 @@ You should get a QR code to scan and go to the URL where you app is running, or 
 
 This app was tested on IOS device only, styling for Android is WIP.
 
-The app store a record of each quiz taken in this format:
+The app stores a record of each quiz taken in this format:
 
 ```sh
 '5/15/2018': {
