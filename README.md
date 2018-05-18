@@ -53,13 +53,6 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
 ├── CONTRIBUTING.md
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
 ├── README.md - This file.
-├── CONTRIBUTING.md
-├── CONTRIBUTING.md
-├── CONTRIBUTING.md
-├── public
-│   ├── favicon.ico # React Icon, You may change if you wish.
-│   ├── index.html # DO NOT MODIFY
-│   └── manifest.json
 └── src
     ├── actions
     │   └── index.js # All action generators.
@@ -70,7 +63,7 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
     │   ├── DeckList.js
     │   ├── DeckView.js
     │   ├── index.js
-    │   ├── Progress.js
+    │   ├── Progress.js # WIP
     │   ├── Quiz.js
     │   ├── QuizResult.js
     │   └── Reminder.js
@@ -79,7 +72,6 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
     └── utils # Utilities and BlogAPI.js.
         └── index.js # helper functions (eg. Notifications).
 ```
-
 
 ## Contributing
 
