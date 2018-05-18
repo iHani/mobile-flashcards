@@ -50,7 +50,6 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
 ```sh
 ├── App.js # Entry point of the app.
 ├── app.json
-├── CONTRIBUTING.md
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
 ├── README.md - This file.
 └── src
