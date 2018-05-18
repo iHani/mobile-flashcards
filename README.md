@@ -6,6 +6,10 @@ Organize your flashcards with decks and cards, and keep track of your studying p
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app) using [Redux](https://redux.js.org/) as a state container.
 
+### Demo
+
+Test the app using [expo](https://expo.io) tool, go to [this link](exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80).
+
 ## Getting Started:
 Clone this repo
 ```sh
@@ -46,6 +50,7 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
 ```sh
 ├── App.js # Entry point of the app.
 ├── app.json
+├── CONTRIBUTING.md
 ├── package.json # npm package manager file. It's unlikely that you'll need to modify this.
 ├── README.md - This file.
 ├── CONTRIBUTING.md
