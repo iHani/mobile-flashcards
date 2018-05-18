@@ -4,14 +4,11 @@ import { connect } from 'react-redux';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import Progress from './Progress';
 
-const swipeoutBtns = [
-  {
-    text: 'Button',
-    onPress: () => console.log('swipable presses')
-  }
-]
-
 class DeckList extends Component {
+
+  static navigationOptions = ({ navigation }) => ({
+    title: 'Mobile Flashcards',
+  });
 
   onPress = (deck) => {
     const { navigate } = this.props.navigation;
@@ -60,7 +57,7 @@ class DeckList extends Component {
           }
 
           { // for debugging only
-            true && <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>
+            false && <Text style={{ color: 'white' }}>state tree: {JSON.stringify(this.props.state, null, 2)}</Text>
           }
 
         </ScrollView>
@@ -137,8 +134,5 @@ const styles = StyleSheet.create({
 });
 
 const mapStateToProps = (state) => ({ state, decks: state.decks });
-// const mapStateToProps = ({ decks }) => ({ decks });
-// for cases like this one, it would be sexier if we could do something like this :p
-// const mapStateToProps ===> ({ decks })
 
 export default connect(mapStateToProps)(DeckList);

@@ -51,7 +51,7 @@ const DecksStack = StackNavigator({
 });
 
 const TabNavigatorConfig = {
-  initialRouteName: 'Progress',
+  initialRouteName: 'DeckList',
   lazy: true,
   tabBarOptions: {
     activeTintColor: '#0673a0',
@@ -71,7 +71,7 @@ const Tabs = TabNavigator({
   DeckList: {
     screen: DecksStack,
     navigationOptions: {
-      tabBarLabel: 'Decks',
+      // tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-photos-outline' size={30} color={tintColor} />
     },
   },
@@ -85,7 +85,6 @@ const Tabs = TabNavigator({
   Progress: {
     screen: Progress,
     navigationOptions: {
-      tabBarLabel: 'Progress',
       tabBarIcon: ({ tintColor }) => <Ionicons name='ios-stats' size={30} color={tintColor} />
     },
   },

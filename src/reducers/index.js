@@ -32,13 +32,12 @@ const initialState = {
     }
   },
   records: {
-    '5/17/2018': {
+    '5/16/2018': {
       'React': 33,
-      'JavaScript': 20
     },
-    '5/18/2018': {
+    '5/17/2018': {
       'React': 75,
-      'JavaScript': 100
+      'JavaScript': 80
     }
   },
   isReminderEnabled: true,

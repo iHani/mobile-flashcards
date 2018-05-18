@@ -60,7 +60,6 @@ class Quiz extends Component {
       if (isReminderEnabled) {
         clearLocalNotification().then(setLocalNotification());
       }
-      // }
 
       const { navigate } = this.props.navigation;
       return (
@@ -144,7 +143,7 @@ class Quiz extends Component {
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#07587a',
-        padding: 20
+        padding: 20,
       },
       answerText: {
         color: 'white',
@@ -156,9 +155,8 @@ class Quiz extends Component {
         alignItems: 'center',
         backgroundColor: 'white',
         paddingTop: 20,
-        paddingBottom: 50
+        paddingBottom: 50,
       },
-
       progressBox: {
         backgroundColor: '#d3f2ff',
       },
@@ -166,9 +164,8 @@ class Quiz extends Component {
         alignSelf: 'center',
         fontSize: 16,
         fontWeight: 'bold',
-        color: 'grey'
+        color: 'grey',
       },
-
       buttonsSection: {
         flex: 1,
         justifyContent: 'center',
@@ -205,12 +202,11 @@ class Quiz extends Component {
       peekText: {
         color: '#0c93cc',
         textAlign: 'center',
-      }
-
+      },
     });
 
     const mapStateToProps = (state, ownProps) => {
-      const deck = state.decks[ownProps.navigation.state.params.deck].title
+      const deck = state.decks[ownProps.navigation.state.params.deck].title;
       const questions = state.decks[ownProps.navigation.state.params.deck].questions;
       const { isReminderEnabled } = state;
       return ({ deck, questions, isReminderEnabled });

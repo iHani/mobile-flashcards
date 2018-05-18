@@ -12,7 +12,6 @@ class Reminder extends Component {
   }
 
   getDailyMessage = () => {
-    console.log('ddddddd', this.props);
     return this.props.quizTakenToday
     ? `👍 You've taken today's quiz, good job!`
     : `👋 Don't forget to take today's quizzes!`
@@ -25,7 +24,6 @@ class Reminder extends Component {
 
     return (
       <View style={styles.container}>
-
         <View style={[styles.dailyMessaeBox, { borderColor, backgroundColor }]}>
           <Text style={styles.dailyMessaeText}>{this.getDailyMessage()}</Text>
         </View>
@@ -38,7 +36,6 @@ class Reminder extends Component {
             <Switch onValueChange={this.toggleReminderSwitch} value={isReminderEnabled} />
           </View>
         </View>
-
       </View>
     )
   }
@@ -59,14 +56,12 @@ const styles = StyleSheet.create({
     margin: 20,
     borderRadius: 5,
     borderWidth: 1,
-    // borderStyle: 'dashed',
   },
   dailyMessaeText: {
     color: '#195872',
     fontWeight: 'bold',
     fontSize: 16,
   },
-
   switchBox: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -89,7 +84,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = ({ isReminderEnabled, quizTakenToday }) => ({
   isReminderEnabled,
-  quizTakenToday
+  quizTakenToday,
 });
 
 const mapDispatchToProps = (dispatch) => ({

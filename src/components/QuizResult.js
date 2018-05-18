@@ -12,7 +12,7 @@ class QuizResult extends Component {
     if (isReminderEnabled) {
       clearLocalNotification();
     }
-    // update quizTakenToday in the store to show proper daily reminder message
+    // update quizTakenToday in the store to set proper daily reminder message
     quizTaken();
   }
 
@@ -55,37 +55,9 @@ class QuizResult extends Component {
             <Text style={styles.buttonText}>Back to Deck</Text>
           </TouchableOpacity>
         </View>
-
-
-        {/* <Text style={styles.text}>{deck}</Text>
-        <Text style={[styles.text, styles.correctAnswers]}>correctAnswers: {correctAnswers}</Text>
-        <Text style={[styles.text, styles.incorrectAnswers]}>incorrectAnswers: {incorrectAnswers}</Text>
-        <Text style={[styles.text, styles.scoreText]}>Score: %{score}</Text> */}
-
-        {/* <View style={styles.buttonsSection}>
-        <TouchableOpacity
-        style={styles.btnAddCard}
-        onPress={() => navigate('Quiz', { deck })}
-        underlayColor='#fff'>
-        <Text style={styles.addCardText}>Try Again</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-      style={styles.btnStartQuiz}
-      onPress={() => navigate('Progress')}
-      underlayColor='#fff'>
-      <Text style={styles.startQuizText}>Show Progress</Text>
-    </TouchableOpacity>
-    <TouchableOpacity
-    style={styles.btnStartQuiz}
-    onPress={() => navigate('DeckView', { deck })}
-    underlayColor='#fff'>
-    <Text style={styles.startQuizText}>Back to Deck</Text>
-  </TouchableOpacity>
-</View> */}
-
-</View>
-)
-}
+      </View>
+    )
+  }
 }
 
 const styles = StyleSheet.create({
@@ -101,7 +73,6 @@ const styles = StyleSheet.create({
     color: '#07587a',
     paddingTop: 20,
   },
-
   percentageBox: {
     backgroundColor: 'white',
     margin: 20,
@@ -116,11 +87,9 @@ const styles = StyleSheet.create({
     color: '#0c93cc',
     padding: 30,
   },
-
   answersCountBox: {
     flex: 1,
     flexDirection: 'row',
-    // alignItems: 'stretch'
   },
   countBox: {
     flex: 2,
@@ -141,11 +110,8 @@ const styles = StyleSheet.create({
     color: 'white',
     backgroundColor: 'red',
   },
-
-
   buttonsBox: {
     flex: 1,
-    // flexDirection: 'row',
     padding: 20,
     height: 75,
   },
@@ -158,25 +124,11 @@ const styles = StyleSheet.create({
     margin: 5,
     backgroundColor: '#07587a',
     borderRadius: 3,
-
   },
   buttonText: {
     color: '#93dfff',
     fontWeight: 'bold',
     fontSize: 16,
-  },
-
-  correctAnswers: {
-    color: 'green',
-  },
-  incorrectAnswers: {
-    color: 'red',
-  },
-  scoreText: {
-    color: 'purple',
-  },
-  xxxxx: {
-    color: 'red',
   },
 });
 
@@ -186,7 +138,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  quizTaken: () => dispatch(quizTaken())
+  quizTaken: () => dispatch(quizTaken()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(QuizResult);
