@@ -8,12 +8,12 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 ### Demo
 
-Test the app using [expo](https://expo.io) tool, go to [this link](exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80).
+Test the app using [expo](https://expo.io) tool, go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80)``
 
-## Getting Started:
+## Getting Started
 Clone this repo
 ```sh
-$ git clone https://github.com/iHani/mobile-flashcards.git
+git clone https://github.com/iHani/mobile-flashcards.git
 cd mobile-flashcards
 ```
 
