@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 ### Demo
 
-Test the app using [expo](https://expo.io) tool, go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80)``
+Try the Mobile Flashcards App using [expo](https://expo.io) tool, and go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80``
 
 ## Getting Started
 Clone this repo
