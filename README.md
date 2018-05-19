@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 ### Demo
 
-Try the Mobile Flashcards App using [expo](https://expo.io) tool, and go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80``
+Check out the live demo by installing [expo](https://expo.io) tool, then and go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80`` in your browser.
 
 ## Getting Started
 Clone this repo
@@ -68,7 +68,7 @@ Where 'ReactNative' is the deck studied and 98 is the score of the last quiz tak
     │   └── Reminder.js
     ├── reducers
     │   └── index.js # All action function reducers.
-    └── utils # Utilities and BlogAPI.js.
+    └── utils
         └── index.js # helper functions (eg. Notifications).
 ```
 
