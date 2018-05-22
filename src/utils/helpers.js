@@ -54,3 +54,14 @@ export function setLocalNotification () {
       }
     })
 }
+
+export function lastSevenDays () {
+  const day = 86400000;
+  const lastSevenDays = [];
+  const today = new Date().getTime();
+  for (let i = 6; i > -1; i--) {
+    let prevDay = new Date(today - (i * day)).toLocaleDateString();
+    lastSevenDays.push(prevDay);
+  }
+  return lastSevenDays;
+}

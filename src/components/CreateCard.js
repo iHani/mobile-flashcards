@@ -46,7 +46,7 @@ class CreateCard extends Component {
         statusMessage: 'Card created successfully!',
         statusMessageColor: 'green',
       });
-      this.questionTextInput.focus()
+      this.questionTextInput.focus();
     } else {
       this.setState({
         statusMessage: 'Please enter a question and an answer!',

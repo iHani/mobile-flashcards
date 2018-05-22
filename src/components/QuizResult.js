@@ -30,17 +30,19 @@ class QuizResult extends Component {
         </View>
 
         <View style={styles.answersCountBox}>
-          <View style={[styles.countBox, { backgroundColor: 'green' }]}>
-            <Text style={styles.correctAnsewrsCount}>Correct ( {correctAnswers} )</Text>
-          </View>
-          <View style={[styles.countBox, { backgroundColor: 'red' }]}>
+          <View style={[styles.countBox, { backgroundColor: '#e50d0d' }]}>
             <Text style={styles.incorrectAnswersCount}>Incorrect ( {incorrectAnswers} )</Text>
+          </View>
+          <View style={[styles.countBox, { backgroundColor: '#23bc5b' }]}>
+            <Text style={styles.correctAnsewrsCount}>Correct ( {correctAnswers} )</Text>
           </View>
         </View>
 
         <View style={styles.buttonsBox}>
           <TouchableOpacity
-            onPress={() => navigate('Quiz', { deck })}
+            // onPress={() => navigate('Quiz', { deck })}
+            onPress={() => this.props.tryAgain()}
+
             style={styles.button}>
             <Text style={styles.buttonText}>Try Again</Text>
           </TouchableOpacity>
@@ -50,7 +52,7 @@ class QuizResult extends Component {
             <Text style={styles.buttonText}>Progress</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => navigate('DeckView', { deck })}
+            onPress={() => this.props.goBack()}
             style={styles.button}>
             <Text style={styles.buttonText}>Back to Deck</Text>
           </TouchableOpacity>
@@ -102,13 +104,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     color: 'white',
-    backgroundColor: 'green',
   },
   incorrectAnswersCount: {
     fontWeight: 'bold',
     fontSize: 16,
     color: 'white',
-    backgroundColor: 'red',
   },
   buttonsBox: {
     flex: 1,
