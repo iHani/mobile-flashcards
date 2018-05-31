@@ -8,7 +8,7 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 ### Demo
 
-Check out the live demo by installing [expo](https://expo.io) tool, then go to ``exp://su-zhh.haniyahya.mobile-flashcards.exp.direct:80`` in your browser.
+Check out the live demo by installing [expo](https://expo.io) tool, then go to ``https://exp.host/@haniyahya/mobile-flashcards`` in your browser.
 
 ## Getting Started
 Clone this repo
