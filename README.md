@@ -2,7 +2,7 @@
 
 Organize your flashcards with decks and cards, and keep track of your studying progress.
 
-## Create React App
+## Create React App Native
 
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app) using [Redux](https://redux.js.org/) as a state container.
 
@@ -33,17 +33,7 @@ yarn start
 
 You should get a QR code to scan and go to the URL where you app is running, or you can just copy the given URL.
 
-This app was tested on IOS device only, styling for Android is WIP.
-
-The app stores a record of each quiz taken in this format:
-
-```sh
-'5/15/2018': {
-  'ReactNative': 98
-}
-```
-
-Where 'ReactNative' is the deck studied and 98 is the score of the last quiz taken at that day. Yet, the Progress view is also a WIP, and does not reflect the actual dataset from the store.
+This app was tested on IOS device only.
 
 ## What You're Getting
 
